@@ -21,7 +21,7 @@ export default function ContactForm() {
   return (
     <section 
       id="contact" 
-      className="min-h-[132vh] bg-black relative py-[100px] px-[40px]"
+      className="min-h-screen md:min-h-[132vh] bg-black relative py-16 sm:py-20 md:py-[100px] px-4 sm:px-6 md:px-[40px]"
       style={{
         backgroundImage: `
           linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%),
@@ -31,12 +31,12 @@ export default function ContactForm() {
       }}
     >
       {/* Content - Centered */}
-      <div className="max-w-md mx-auto relative z-10 flex flex-col items-center justify-center min-h-[calc(132vh-200px)]">
+      <div className="w-full max-w-md mx-auto relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-200px)] md:min-h-[calc(132vh-200px)]">
         <motion.h2 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-[50px] font-bold text-white leading-[60px] tracking-[-2.1px] text-center mb-12"
+          className="text-[28px] leading-[34px] sm:text-[36px] sm:leading-[44px] md:text-[50px] md:leading-[60px] font-bold text-white tracking-[-2.1px] text-center mb-6 sm:mb-8 md:mb-12"
         >
           Kontakt
         </motion.h2>
@@ -46,11 +46,11 @@ export default function ContactForm() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           onSubmit={handleSubmit(onSubmit)} 
-          className="space-y-6 w-full"
+          className="space-y-4 sm:space-y-6 w-full"
         >
-          {/* Name and Email in a row */}
-          <div className="flex gap-6">
-            <div className="flex-1">
+          {/* Name and Email in a row on larger screens */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div className="flex-1 w-full">
               <label htmlFor="name" className="block text-sm font-normal text-white mb-2">
                 Name
               </label>
@@ -59,14 +59,14 @@ export default function ContactForm() {
                 id="name"
                 {...register('name', { required: 'Name ist erforderlich' })}
                 whileFocus={{ borderColor: "rgba(255,255,255,0.4)", scale: 1.01 }}
-                className="w-full h-[40px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none transition-all duration-200"
+                className="w-full h-[44px] sm:h-[40px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none transition-all duration-200"
                 placeholder="Jane Smith"
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
               )}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <label htmlFor="email" className="block text-sm font-normal text-white mb-2">
                 Email
               </label>
@@ -81,7 +81,7 @@ export default function ContactForm() {
                   }
                 })}
                 whileFocus={{ borderColor: "rgba(255,255,255,0.4)", scale: 1.01 }}
-                className="w-full h-[40px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none transition-all duration-200"
+                className="w-full h-[44px] sm:h-[40px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none transition-all duration-200"
                 placeholder="jane@framer.com"
               />
               {errors.email && (
@@ -99,7 +99,7 @@ export default function ContactForm() {
               id="message"
               {...register('message', { required: 'Nachricht ist erforderlich' })}
               whileFocus={{ borderColor: "rgba(255,255,255,0.4)", scale: 1.01 }}
-              className="w-full h-[100px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none resize-none transition-all duration-200"
+              className="w-full h-[120px] sm:h-[100px] bg-gray-900/70 border border-white/20 text-sm font-normal text-white placeholder:text-gray-400 px-4 py-3 rounded-lg focus:border-white/40 focus:outline-none resize-none transition-all duration-200"
               placeholder="Your message..."
             />
             {errors.message && (
@@ -113,7 +113,7 @@ export default function ContactForm() {
             whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(120, 131, 233, 0.3)" }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="w-full h-[40px] bg-[rgb(120,131,233)] text-white text-sm font-semibold rounded-lg hover:bg-[rgb(100,111,213)] transition-all duration-300"
+            className="w-full h-[48px] sm:h-[40px] bg-[rgb(120,131,233)] text-white text-sm font-semibold rounded-lg hover:bg-[rgb(100,111,213)] transition-all duration-300"
           >
             Submit
           </motion.button>
@@ -121,16 +121,16 @@ export default function ContactForm() {
       </div>
       
       {/* Footer with Logo */}
-      <footer className="absolute bottom-[100px] left-0 right-0 text-center z-10">
-        <div className="flex items-center justify-center gap-3">
+      <footer className="absolute bottom-4 sm:bottom-6 md:bottom-[40px] left-0 right-0 text-center z-10">
+        <div className="flex items-center justify-center gap-2 sm:gap-3">
           <Image
             src="/hybit-logo.png"
             alt="Hybit logo"
             width={40}
             height={40}
-            className="w-10 h-10 object-contain"
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
           />
-          <span className="text-4xl font-medium text-white">hybit.</span>
+          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-white">hybit.</span>
         </div>
       </footer>
     </section>

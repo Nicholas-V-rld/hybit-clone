@@ -14,26 +14,30 @@ export default function Navigation() {
     const y = e.clientY - rect.top;
     setMouseY(y);
   };
+
   return (
-    <nav className="relative w-full h-20 bg-gradient-to-r from-framer-blue-light to-framer-purple">
-      <div className="max-w-3xl mx-auto px-8 h-full">
+    <nav className="relative w-full h-16 sm:h-20 bg-gradient-to-r from-framer-blue-light to-framer-purple">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 h-full">
         <div className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-3">
+          {/* Logo - centered on mobile/tablet, left-aligned on desktop */}
+          <div className="flex items-center gap-2 sm:gap-3 lg:flex-none flex-1 lg:flex-initial justify-center lg:justify-start">
             <Image
               src="/hybit-logo.png"
               alt="Hybit logo"
               width={40}
               height={40}
-              className="w-10 h-10 object-contain"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
               priority
             />
-            <Link href="/" className="text-4xl font-medium text-framer-text">
+            <Link href="/" className="text-xl sm:text-2xl md:text-4xl font-medium text-framer-text">
               hybit.
             </Link>
           </div>
+          
+          {/* Desktop Button - only visible on lg screens and up */}
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center px-[25px] py-[19px] h-[60px] text-[25px] font-bold border border-framer-text rounded-full text-framer-text bg-transparent relative"
+            className="hidden lg:inline-flex items-center justify-center px-[25px] py-[19px] h-[60px] text-[25px] font-bold border border-framer-text rounded-full text-framer-text bg-transparent relative"
             style={{ perspective: '1000px' }}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
